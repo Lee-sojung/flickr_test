@@ -1,0 +1,89 @@
+@charset "UTF-8";  
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap');
+@import 'reset.scss'; 
+
+body{background: #eee;}
+
+#searchBox{
+   padding: 50px; font-size: 0; 
+
+   input{
+      width: 300px; height: 30px; border: 1px solid #ddd;
+      padding-left: 10px;
+   }
+   button{
+      width: 80px; height: 30px;
+      background: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+   }
+}
+#wrap{
+   width: 100%;
+   padding: 50px;
+
+   .loading{
+      width: 100px;
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      transition: 1s;
+
+      &.off{
+         opacity: 0;
+      }
+   }
+
+   #list{
+      &::after{content: ""; display: block; clear: both;}
+
+      opacity: 0; transform: translateY(100px); transition: 1s;
+      &.on{
+         opacity: 1; transform: translateY(0px);
+      }
+      li{
+         width: calc(100% / 6); float: left; padding: 10px;
+
+         div{
+            padding: 20px;
+
+            >a>img{
+               width: 100%;
+            }
+            p{
+               font: 12px/1.2 "arial"; color: #777;
+               margin-top: 10px; margin-bottom: 10px;
+            }
+            span{
+               display: flex; align-items: center; 
+               margin-top: 20px;
+
+               >img{
+                  width: 20px; height: 20px;
+                  border-radius: 50%; margin-right: 5px;
+               }
+               strong{
+                  font: 11px/1 "arial"; color: orange;
+               }
+            }
+         }
+      }
+   }
+}
+
+@media screen and (max-width:1599px) {
+   #wrap #list li { width: calc(100%/5); }
+}
+@media screen and (max-width:1399px) {
+   #wrap #list li { width: calc(100%/4); }
+}
+@media screen and (max-width:999px) {
+   #wrap #list li { width: calc(100%/3); }
+}
+@media screen and (max-width:739px) {
+   #wrap #list li { width: calc(100%/2); }
+}
+@media screen and (max-width:439px) {
+   #wrap #list li { width: calc(100%/1); }
+}
