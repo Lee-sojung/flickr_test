@@ -18,6 +18,9 @@ class Flickr{
       this.base = "https://www.flickr.com/services/rest/?";
       this.method1 = "flickr.interestingness.getList";
       this.method2 = "flickr.photos.search";
+      this.method3 = "flickr.people.getPhotos";
+      this.method4 = "flickr.favorites.getList";
+      this.method5 = "flickr.galleries.getPhotos";
       this.api_key = opt.apiKey;
       this.per_page = opt.count;
    
@@ -25,17 +28,32 @@ class Flickr{
       this.url1 = `${this.base}method=${this.method1}&api_key=${this.api_key}&per_page=${this.per_page}&format=json&nojsoncallback=1`;
 
 
+      //이름으로 찾기
+      this.username = "194295683@N05";
+      
+      this.url2 = `${this.base}method=${this.method3}&api_key=${this.api_key}&per_page=${this.per_page}&format=json&nojsoncallback=1&user_id=${this.username}`;
+
+
+      //좋아요 사진 찾기
+      this.url3 = `${this.base}method=${this.method4}&api_key=${this.api_key}&per_page=${this.per_page}&format=json&nojsoncallback=1&user_id=${this.username}`;
+
+      //갤러리 사진 찾기
+      this.galleryname = "72157720230495850";
+      this.url4 = `${this.base}method=${this.method5}&api_key=${this.api_key}&per_page=${this.per_page}&format=json&nojsoncallback=1&gallery_id=${this.galleryname}`;
+
+
+      this.callData(this.url4);
 
 
 
-   this.callData(this.url1);
 
-   this.btnSearch.addEventListener("click", e=>{
-      let tag = this.input.value;
+      
+      this.btnSearch.addEventListener("click", e=>{
+         let tag = this.input.value;
 
-      const url2 = `${this.base}method=${this.method2}&api_key=${this.api_key}&per_page=${this.per_page}&format=json&nojsoncallback=1&privacy_filter=1&tags=${tag}`;
+         const url2 = `${this.base}method=${this.method2}&api_key=${this.api_key}&per_page=${this.per_page}&format=json&nojsoncallback=1&privacy_filter=1&tags=${tag}`;
 
-      this.callData(this.url2);
+         this.callData(this.url2);
    })
 
    this.input.addEventListener("keypress", e=>{
