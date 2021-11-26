@@ -7,19 +7,20 @@ flickr.interestingness.getList
 */
 
 class Flickr{
-   constructor(){
-      this.main = document.querySelector("main");
-      this.frame = document.querySelector("#list");
-      this.loading = document.querySelector(".loading");
-      this.input = document.querySelector("#search");
-      this.btnSearch =document.querySelector("#btnSearch");
+   constructor(selector, opt){
+      this.main = document.querySelector(selector);
+      this.frame = document.querySelector(opt.galleryFrame);
+      this.searchFrame = document.querySelector(opt.searchFrame);
+      this.input = this.searchFrame.querySelector("#search");
+      this.btnSearch =this.searchFrame.querySelector("button");
 
+      this.loading = document.querySelector(".loading");
       this.base = "https://www.flickr.com/services/rest/?";
       this.method1 = "flickr.interestingness.getList";
       this.method2 = "flickr.photos.search";
-      this.api_key = "1ea09af8cbfa636469cabf6280b01b71";
-      this.per_page = 50;
-      this.format = "json";
+      this.api_key = opt.apiKey;
+      this.per_page = opt.count;
+   
 
       this.url1 = `${this.base}method=${this.method1}&api_key=${this.api_key}&per_page=${this.per_page}&format=json&nojsoncallback=1`;
 
@@ -70,11 +71,13 @@ this.frame.addEventListener("click", e=>{
 this.main.addEventListener("click", e=>{
 
       let pop = this.main.querySelector("aside");
-      let close = pop.querySelector(".close");
-      
-      if(e.target == close) pop.remove();
 
-   })
+      if(pop !==null){
+         let close = pop.querySelector(".close");
+      
+         if(e.target == close) pop.remove();
+      }
+   });
 
 
    }

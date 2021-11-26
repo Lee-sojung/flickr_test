@@ -10,7 +10,12 @@
     <script defer src="js/flickr.js"></script>
     <script>
         window.addEventListener("load", ()=>{
-            new Flickr();
+            new Flickr("main",{
+                galleryFrame : "#list",
+                searchFrame : "#searchBox",
+                apiKey : "1ea09af8cbfa636469cabf6280b01b71",
+                count : 50
+            });
         })
     </script>
 </head>

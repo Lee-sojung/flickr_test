@@ -95,7 +95,8 @@ aside {
     position: absolute;
     top: 20px;
     right: 20px;
-    color: #fff; }
+    color: #fff;
+    cursor: pointer; }
 
 @media screen and (max-width: 1599px) {
   #wrap #list li {
