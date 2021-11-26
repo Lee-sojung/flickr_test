@@ -5,6 +5,8 @@ flickr.interestingness.getList
 
 1ea09af8cbfa636469cabf6280b01b71
 */
+
+const main = document.querySelector("main");
 const frame = document.querySelector("#list");
 const loading = document.querySelector(".loading");
 const input = document.querySelector("#search");
@@ -43,8 +45,11 @@ input.addEventListener("keypress", e=>{
    }
 })
 
+//팝업생성
 frame.addEventListener("click", e=>{
    e.preventDefault();
+
+   if(e.target !== e.target.closest(".item").querySelector(".thumbnail")) return;
 
    let target = e.target.closest(".item");
    let imgSrc = target.querySelector("a").getAttribute("href");
@@ -57,6 +62,16 @@ frame.addEventListener("click", e=>{
    
    pop.innerHTML = pops;
    document.querySelector("main").append(pop);
+})
+
+//팝업닫기버튼 클릭이벤트
+main.addEventListener("click", e=>{
+
+   let pop = main.querySelector("aside");
+   let close = pop.querySelector(".close");
+      
+   if(e.target == close) pop.remove();
+
 })
 
 function callData(url){
